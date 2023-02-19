@@ -1,4 +1,5 @@
 const {OrganizationReport} = require('../models/models')
+const fs = require('fs')
 const uuid = require('uuid')
 const path = require('path')
 
@@ -6,9 +7,9 @@ class organizationReportController {
     async registration(req, res, next) {
         try {
             const {period} = req.body
-            const {file} = req.file
-            let filename = uuid.v4() + '.png'
-            file.mv(path.resolve(__dirname,'..', 'static', filename))
+            const {file} = req.files
+            let filename = uuid.v4() + '.pdf'
+            file.mv(path.resolve(__dirname + '/static/', filename))
             const object = await OrganizationReport.create({period, source:filename})
             return res.status(200).json(object);
         } catch (error) {
