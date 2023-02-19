@@ -9,7 +9,7 @@ class organizationReportController {
             const {period} = req.body
             const {file} = req.files
             let filename = uuid.v4() + '.pdf'
-            file.mv(path.resolve(__dirname + '/static/', filename))
+            file.mv(path.resolve(__dirname, '..', 'static', filename))
             const object = await OrganizationReport.create({period, source:filename})
             return res.status(200).json(object);
         } catch (error) {
