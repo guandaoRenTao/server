@@ -8,6 +8,16 @@ const User = sequelize.define('user', {
   role: {type: DataTypes.STRING, defaultValue: 'RESIDENT'},
 })
 
+const MetersData = sequelize.define('meters_data', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  hot_water: {type: DataTypes.DOUBLE},
+  cold_water: {type: DataTypes.DOUBLE},
+  electricity: {type: DataTypes.DOUBLE},
+})
+
+User.hasOne(MetersData)
+MetersData.belongsTo(User)
+
 const Organization = sequelize.define('organization', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   inn: {type: DataTypes.STRING},
@@ -63,7 +73,7 @@ Repairment.belongsTo(Object)
 const OrganizationReport  = sequelize.define('organization_report', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   period: {type: DataTypes.DATE},
-  // source: {type: DataTypes.STRING},
+  source: {type: DataTypes.STRING},
 })
 
 Organization.hasMany(OrganizationReport)
@@ -109,10 +119,15 @@ const Anouncment  = sequelize.define('anouncment', {
   text: {type: DataTypes.STRING},
   date: {type: DataTypes.DATE},
 })
+const Camera  = sequelize.define('camera', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  ip: {type: DataTypes.STRING}
+})
 
 
 module.exports = { 
   User,
+  MetersData,
   Organization,
   Contractor,
   Resident,
@@ -125,5 +140,6 @@ module.exports = {
   Task,
   Facility,
   FacilityCheckout,
-  Anouncment
+  Anouncment,
+  Camera
 }

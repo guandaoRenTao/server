@@ -9,16 +9,17 @@
 </head>
 <body>
 
-    <form action="api/facility/registration" method="post" >
-        <input name="name" type="text">
+    <form action="api/organizationReport/registration" method="post" >
+        <input name="period" type="date">
+        <input name="file" type="file">
         <input type="submit" value="войти">
     </form>
-    <script defer>
+    <!-- <script defer>
         $(document).ready(
             $.getJSON("/api/task/", function(data){
                 console.log(data)
             }));
-    </script>
+    </script> -->
     <style>
         body{background-color: darkslategrey ;}
         input{background-color: transparent; outline: none;}

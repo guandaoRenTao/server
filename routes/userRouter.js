@@ -5,7 +5,7 @@ const auth = require('../middleware/authMiddleware')
 const Router = require('express')
 const router = new Router()
 
-router.post('/registration',checkRole('ADMIN'), userController.registration)
+router.post('/registration', userController.registration)
 router.post('/login', userController.login)
 router.get('/auth',  auth, userController.auth)
 router.delete('', checkRole('ADMIN'), userController.delete)
