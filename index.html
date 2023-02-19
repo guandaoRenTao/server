@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="api/facility/registration" method="post" >
+        <input name="name" type="text">
+        <input type="submit" value="войти">
+    </form>
+    <script defer>
+        $(document).ready(
+            $.getJSON("/api/task/", function(data){
+                console.log(data)
+            }));
+    </script>
+    <style>
+        body{background-color: darkslategrey ;}
+        input{background-color: transparent; outline: none;}
+    </style>
+</body>
+</html>
